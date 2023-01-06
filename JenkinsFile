@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                branch 'Developement'
+                branch 'Development'
             }
             steps{
                 echo "Deploying the application to Dev environment"
