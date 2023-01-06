@@ -9,25 +9,25 @@ pipeline {
     stages {
         stage('Validate') {
             steps {
-                git 'https://github.com/kiranp227/sample-java-programs.git'
+                git branch: 'Development', url: 'https://github.com/kiranp227/sample-java-programs.git'
                 sh "mvn validate"
             }
         }
         stage('Compile') {
             steps {
-                git 'https://github.com/kiranp227/sample-java-programs.git'
+                git branch: 'Development', url: 'https://github.com/kiranp227/sample-java-programs.git'
                 sh "mvn compile"
             }
         }
         stage('Test') {
             steps {
-                git 'https://github.com/kiranp227/sample-java-programs.git'
+                git branch: 'Development', url: 'https://github.com/kiranp227/sample-java-programs.git'
                 sh "mvn test"
             }
         }
         stage('Build') {
             steps {
-                git 'https://github.com/kiranp227/sample-java-programs.git'
+                git branch: 'Development', url: 'https://github.com/kiranp227/sample-java-programs.git'
                 sh "mvn package"
             }
         }
