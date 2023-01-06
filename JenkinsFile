@@ -38,8 +38,8 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                branch 'Development'
-            }
+                  environment name: 'Branch', value: 'Development'
+             }
             steps{
                 echo "Deploying the application to Dev environment"
                 echo "sleep 5"
