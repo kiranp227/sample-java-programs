@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "Devops"
+    }
+
+    stages {
+        stage('Validate') {
+            steps {
+                git 'https://github.com/kiranp227/sample-java-programs.git'
+                sh "mvn validate"
+            }
+        }
+        stage('Compile') {
+            steps {
+                git 'https://github.com/kiranp227/sample-java-programs.git'
+                sh "mvn compile"
+            }
+        }
+        stage('Test') {
+            steps {
+                git 'https://github.com/kiranp227/sample-java-programs.git'
+                sh "mvn test"
+            }
+        }
+        stage('Build') {
+            steps {
+                git 'https://github.com/kiranp227/sample-java-programs.git'
+                sh "mvn package"
+            }
+        }
+        stage('Clean_Workspace') {
+            steps{
+                cleanWs()
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'Developement'
+            }
+            steps{
+                echo "Deploying the application to Dev environment"
+                echo "sleep 5"
+                echo "Applicaion is successfully deployed"
+            }
+        }
+    }
+}
